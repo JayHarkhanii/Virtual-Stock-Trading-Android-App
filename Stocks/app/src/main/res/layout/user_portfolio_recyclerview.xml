@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/pf_ticker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="AAPL"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pf_number_of_shares"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pf_ticker"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:text="3 shares" />
+
+    <TextView
+        android:id="@+id/pf_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:text="$531.09"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/pf_pc_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/pf_price"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toLeftOf="@+id/pf_price_change" />
+
+    <TextView
+        android:id="@+id/pf_price_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/pf_price"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp"
+        android:text="$0.45 (0.09%)"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/right_arrow"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-35dp"
+        android:layout_marginTop="35dp"
+        android:layout_toRightOf="@+id/pf_price"
+        android:src="@drawable/ic_right_arrow" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:backgroundTint="#c0c0c0"/>
+
+
+</RelativeLayout>

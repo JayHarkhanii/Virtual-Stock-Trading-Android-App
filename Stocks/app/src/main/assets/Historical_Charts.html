@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Highcharts-->
+	 <script src="https://code.highcharts.com/stock/highstock.js"></script>
+<!--	 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>-->
+	 <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+	 <script src="https://code.highcharts.com/modules/annotations.js"></script>
+	 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+     <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+     <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+     <script src="https://code.highcharts.com/highcharts-more.js"></script>
+     <script src="https://code.highcharts.com/indicators/indicators-all.js"></script>
+     <script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+
+</head>
+
+<body>
+
+    <div id="company_historical_data" class="historical_charts"></div>
+
+    <script>
+        function get_company_historical_charts(ticker)
+        {
+            var xhttp = new XMLHttpRequest();
+			xhttp.open('GET','https://assignment-8-346123.wl.r.appspot.com/company_historical_data/' + ticker , true);
+			xhttp.onreadystatechange = function(){
+				if (this.readyState == 4 && this.status == 200){
+					console.log(this.responseText)
+					display_charts(JSON.parse(this.responseText));
+				}
+			};
+			xhttp.send();
+
+            function display_charts(stock_hist_data){
+                document.getElementById("company_historical_data").style.display = "block";
+
+                stock_ohlc = [];
+		        stock_volume = [];
+
+                console.log(stock_hist_data)
+
+                var len;
+                
+                if (stock_hist_data.c.length)
+                {
+                    len = stock_hist_data.c.length; 
+                }
+
+                else{
+                    len = 0;
+                }
+
+                // console.log(this.stock_hist_data)
+
+                if (len > 0) {
+
+                    var i = 0;
+                    while (i < len) {
+                        const date_utc = stock_hist_data.t[i] * 1000;
+                        var opening_price = stock_hist_data.o[i];
+                        var high_price = stock_hist_data.h[i];
+                        var low_price = stock_hist_data.l[i];
+                        var c = stock_hist_data.c[i];
+                        var volume_traded = stock_hist_data.v[i];
+
+                        stock_ohlc.push([date_utc, opening_price, high_price, low_price, c]);
+                        stock_volume.push([date_utc, volume_traded]);
+                        
+                        i++;
+                    }
+
+                    Highcharts.stockChart('company_historical_data',{
+                        rangeSelector: {
+                            selected: 2,
+                        },
+
+                        tooltip: {
+                            split: true,
+                        },
+                        title: {
+                            text: ticker + ' Historical',
+                        },
+
+                        subtitle: {
+                            text: 'With SMA and Volume by Price technical indicators',
+                        },
+
+                        yAxis: [
+                            {   startOnTick: false,
+                                endOnTick: false,
+                                labels: {
+                                    align: 'right',
+                                    x: -3,
+                                },
+                                title: {
+                                    text: 'OHLC',
+                                },
+                                height: '60%',
+                                lineWidth: 2,
+                                resize: {
+                                    enabled: true,
+                                },
+                            },
+                            {
+                                labels: {
+                                    align: 'right',
+                                    x: -3,
+                                },
+                                title: {
+                                    text: 'Volume',
+                                },
+                                top: '65%',
+                                height: '35%',
+                                offset: 0,
+                                lineWidth: 2,
+                            },
+                        ],
+
+                        plotOptions: {
+                            series: {
+                                dataGrouping: {
+                                    units: [
+                                        ['day', [1]],
+                                        ['week', [1]],
+                                    ],
+                                },
+                            },
+                        },
+
+                        series: [
+                            {
+                                type: 'candlestick',
+                                name: ticker,
+                                id: 'aapl',
+                                zIndex: 2,
+                                data: stock_ohlc,
+                            },
+                            {
+                                type: 'column',
+                                name: 'Volume',
+                                id: 'volume',
+                                data: stock_volume,
+                                yAxis: 1,
+                            },
+                            {
+                                type: 'vbp',
+                                linkedTo: 'aapl',
+                                params: {
+                                    volumeSeriesID: 'volume',
+                                },
+                                dataLabels: {
+                                    enabled: false,
+                                },
+                                zoneLines: {
+                                    enabled: false,
+                                },
+                            },
+                            {
+                                type: 'sma',
+                                linkedTo: 'aapl',
+                                zIndex: 1,
+                                marker: {
+                                    enabled: false,
+                                },
+                            },
+                        ],
+                    });
+		        }
+            }
+        }
+    </script>
+
+</body>
+</html>

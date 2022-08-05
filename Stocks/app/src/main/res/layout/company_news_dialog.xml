@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:id="@+id/news_dialog"-->
+<!--    tools:ignore="InvalidId">-->
+
+
+    <androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="40dp"
+        app:cardCornerRadius="40dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_summary"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_chrome" />
+
+            <ImageView
+                android:id="@+id/twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_summary"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@+id/google"
+                android:src="@drawable/ic_twitter" />
+
+            <ImageView
+                android:id="@+id/facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/news_summary"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_facebook" />
+
+            <TextView
+                android:id="@+id/news_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_headline"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="5sp"
+                android:maxLines="10"
+                android:text="Billionaire entrepreneur Elon Musk took aim at Twitter Inc with a $43 billion cash takeover offer on Thursday, with the Tesla CEO saying the social media company needs to be taken private to grow and become a platform for free speech."
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/news_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:text="Yahoo"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/news_datetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_source"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:text="March 28, 2022"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/news_headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_datetime"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="50dp"
+                android:text="RPT-GRAPHIC-Tesla adds to wave of megacap stock splits"
+                android:textColor="@color/black"
+                android:textSize="19.5dp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/news_datetime"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+<!--</RelativeLayout>-->

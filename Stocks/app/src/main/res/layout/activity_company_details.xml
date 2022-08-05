@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".company_details"
+    android:background="@color/white">
+
+    <include
+        layout="@layout/comp_details_toolbar"
+        android:id="@+id/comp_details_toolbar"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/progress_bar">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/purple_500"/>
+
+    </RelativeLayout>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/company_details_layout">
+
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            tools:context=".company_details">
+
+
+            <ImageView
+                android:id="@+id/ticker_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp" />
+
+            <RelativeLayout
+                android:id="@+id/price_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/ticker_icon">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/stock_price">
+
+                    <ImageView
+                        android:id="@+id/stock_price_change_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/stock_price_change"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="30dp"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/stock_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-9dp"
+                    android:textColor="@color/black"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/stock_name"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ticker_name"
+                    android:paddingLeft="10dp"
+                    android:textSize="19dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ticker_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/portfolio_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tablayout"
+                android:layout_marginTop="30dp">
+
+                <Button
+                    android:id="@+id/trade_btn"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="90dp"
+                    android:layout_toRightOf="@+id/average_cost"
+                    android:background="@drawable/rounded_corners"
+                    android:backgroundTint="#009933"
+                    android:letterSpacing="0.1"
+                    android:text="TRADE"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/prt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Portfolio"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/shares"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prt"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Shares Owned:"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/shares_owned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/prt"
+                    android:paddingLeft="140dp"
+                    android:paddingTop="10dp"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/avg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shares"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Avg. Cost / Share:"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/average_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shares"
+                    android:paddingLeft="140dp"
+                    android:paddingTop="10dp"
+                    android:text="$0.00"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/avg"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Total cost:"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/total_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/average_cost"
+                    android:paddingLeft="140dp"
+                    android:paddingTop="10dp"
+                    android:text="$0.00"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/chng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/total"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Change:"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/total_cost"
+                    android:paddingLeft="140dp"
+                    android:paddingTop="10dp"
+                    android:text="$0.00"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/mrkt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chng"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="Market Value:"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/market_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/change"
+                    android:paddingLeft="140dp"
+                    android:paddingTop="10dp"
+                    android:text="$0.00"
+                    android:textColor="@color/black" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/stats_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stats">
+
+                <RelativeLayout
+                    android:id="@+id/stats_details_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/op"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:text="Open Price :"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/open_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/op"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/lp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/op"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Low Price : "
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/low_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/op"
+                        android:layout_toRightOf="@+id/lp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/stats_details_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/stats_details_1"
+                    android:paddingLeft="38dp"
+                    android:paddingRight="12dp">
+
+                    <TextView
+                        android:id="@+id/hp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="High Price : "
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:id="@+id/high_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/hp"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:id="@+id/pc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/hp"
+                        android:layout_marginTop="10dp"
+                        android:text="Prev. Close :"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/prev_close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/hp"
+                        android:layout_toRightOf="@+id/pc"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/about_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/abt">
+
+                <!-- Left Side of About -->
+                <RelativeLayout
+                    android:id="@+id/about_details_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/ipo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="IPO Start Date"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/idt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ipo"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Industry"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/wbpg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/idt"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Webpage"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/cp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/wbpg"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Company Peers"
+                        android:textColor="@color/black"/>
+
+                </RelativeLayout>
+
+                <!-- Right Side of About -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/about_details_1"
+                    android:paddingLeft="20dp">
+
+                    <TextView
+                        android:id="@+id/industry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ipo_start_date"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/webpage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/industry"
+                        android:layout_marginTop="10dp"
+                        android:autoLink="web"
+                        android:ellipsize="end"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorLink="#0000EE"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/ipo_start_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/company_peers_recycler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/webpage"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/stats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/portfolio_details"
+                android:layout_marginTop="30dp"
+                android:text="Stats"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <!-- About Section -->
+            <TextView
+                android:id="@+id/abt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stats_details"
+                android:layout_marginTop="30dp"
+                android:text="About"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/display_charts"
+                android:layout_width="match_parent"
+                android:layout_height="430dp"
+                android:layout_below="@+id/price_details"
+                android:backgroundTint="@color/white" />
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/display_charts"
+                android:paddingTop="20dp"
+                app:tabIndicatorColor="@color/com_facebook_blue"
+                app:tabSelectedTextColor="@color/com_facebook_blue">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_hourly_charts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hourly Charts"
+                    />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_historical_charts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Historical Charts" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <TextView
+                android:id="@+id/ins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_details"
+                android:layout_marginTop="30dp"
+                android:text="Insights"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <RelativeLayout
+                android:id="@+id/insights_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ins">
+
+                <RelativeLayout
+                    android:id="@+id/insights_details_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/sentiments"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/company_name"
+                        android:layout_width="160dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#DCDCDC"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tm"
+                        android:layout_width="160dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/company_name"
+                        android:layout_marginTop="2dp"
+                        android:background="#DCDCDC"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="3dp"
+                        android:text="Total Mentions"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/pm"
+                        android:layout_width="160dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/tm"
+                        android:layout_marginTop="2dp"
+                        android:background="#DCDCDC"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="3dp"
+                        android:text="Positive Mentions"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/nm"
+                        android:layout_width="160dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/pm"
+                        android:layout_marginTop="2dp"
+                        android:background="#DCDCDC"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="3dp"
+                        android:text="Negative Mentions"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/insights_details_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sentiments"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/insights_details_1">
+
+                    <TextView
+                        android:id="@+id/r"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#DCDCDC"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:text="Reddit"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/reddit_total_mentions"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/r"
+                        android:layout_marginTop="2dp"
+                        android:background="#F0F0F0"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="3dp"
+                        android:text="0"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/reddit_positive_mentions"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/reddit_total_mentions"
+                        android:text="0"
+                        android:layout_marginTop="2dp"
+                        android:background="#F0F0F0"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="3dp"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/reddit_negative_mentions"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/reddit_positive_mentions"
+                        android:layout_marginTop="2dp"
+                        android:background="#F0F0F0"
+                        android:paddingBottom="3dp"
+                        android:text="0"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="3dp"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/insights_details_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sentiments"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/insights_details_2">
+
+                    <TextView
+                        android:id="@+id/t"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:background="#DCDCDC"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Twitter"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/twitter_total_mentions"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/t"
+                        android:layout_marginTop="2dp"
+                        android:background="#F0F0F0"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:text="0"
+                        android:paddingTop="3dp"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/twitter_positive_mentions"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/twitter_total_mentions"
+                        android:layout_marginTop="2dp"
+                        android:background="#F0F0F0"
+                        android:paddingBottom="3dp"
+                        android:text="0"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="3dp"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/twitter_negative_mentions"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:layout_below="@+id/twitter_positive_mentions"
+                        android:layout_marginTop="2dp"
+                        android:background="#F0F0F0"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:text="0"
+                        android:paddingTop="3dp"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/sentiments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:text="Social Sentiments"
+                    android:textColor="@color/black"
+                    android:textSize="22dp" />
+
+            </RelativeLayout>
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/rt"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_below="@+id/insights_details"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_marginTop="20dp"-->
+    <!--            android:text="Recommendation Trends"-->
+    <!--            android:textSize="25dp" />-->
+
+            <WebView
+                android:id="@+id/reco_chart"
+                android:layout_width="match_parent"
+                android:layout_height="430dp"
+                android:layout_below="@+id/insights_details"
+                android:layout_marginTop="30dp"
+                android:text="Recommendation Trend Chart"
+                android:textSize="15dp" />
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/hes"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_below="@+id/reco_chart"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_marginTop="20dp"-->
+    <!--            android:text="Historical EPS Surprises"-->
+    <!--            android:textSize="25dp" />-->
+
+            <WebView
+                android:id="@+id/eps_surprises_chart"
+                android:layout_width="match_parent"
+                android:layout_height="430dp"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/reco_chart"
+                android:text="EPS Chart" />
+
+            <TextView
+                android:id="@+id/n"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="News"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/eps_surprises_chart"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/company_news_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/n"
+                android:layout_marginTop="10dp" />
+
+            </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+</RelativeLayout>

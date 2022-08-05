@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="370dp"
+    android:layout_height="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="40dp"
+        android:backgroundTint="#038103">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/cong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="Congratulations!"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/congrats_msg_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cong"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/congrats_msg_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/congrats_msg_1"
+                android:layout_centerHorizontal="true"
+                android:textStyle="italic"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/done_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DONE"
+                android:layout_below="@+id/congrats_msg_2"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="#009900"
+                android:paddingLeft="130dp"
+                android:paddingRight="130dp"
+                android:textSize="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:backgroundTint="@color/white"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

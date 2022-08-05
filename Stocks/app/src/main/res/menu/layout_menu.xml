@@ -1,0 +1,10 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <item android:id="@+id/add_fav"
+        android:title="star"
+        android:icon="@drawable/ic_chrome"
+        app:showAsAction="ifRoom" />
+
+</menu>

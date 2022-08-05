@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Stocks</string>
+    <string name="finnhub">
+        <a style="text-decoration: none;" href="https://finnhub.io/" target="_blank">Powered by Finnhub</a>
+    </string>
+    <string name="user_wallet">com.example.stocks.user_wallet</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="underline_text"><u> </u></string>
+</resources>

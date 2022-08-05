@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Highcharts-->
+ <script src="https://code.highcharts.com/stock/highstock.js"></script>
+ <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+ <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+ <script src="https://code.highcharts.com/modules/annotations.js"></script>
+ <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+    <div id="company_earnings" class="comp_earnings"></div>
+
+    <script>
+            function get_company_earnings_data(ticker)
+            {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open('GET','https://assignment-8-346123.wl.r.appspot.com/company_earnings/' + ticker, true);
+                xhttp.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText)
+                        display_company_earnings(JSON.parse(this.responseText));
+                    }
+                };
+                xhttp.send();
+
+
+                function display_company_earnings(company_earnings_data){
+                    console.log(company_earnings_data)
+                    
+                    Highcharts.chart('company_earnings',{
+                        chart: {
+                            type: 'spline',
+                            height: 400,
+                        },
+                        tooltip: {
+                            valueDecimals: 2
+                        },
+                        title: {
+                            text: 'Historical EPS Surprise',
+                            style: {
+                                    fontSize: '22px'
+                                    }
+                        },
+                        
+                        legend: {
+                            enabled: true
+                        },
+
+                        plotOptions: {
+                            spline: {
+                                marker: {
+                                    enable: false
+                                }
+                            }
+                        },
+                        xAxis: {
+                            categories: company_earnings_data.period
+                        },
+
+                        yAxis: {
+                            title: {
+                                text: 'Quarterly EPS'
+                            }
+                        },
+                        
+                        tooltip: {
+                            shared: true,
+                            useHTML: true,
+                            headerFormat: '{point.x}<br>',
+                        },
+
+                        series: [{
+                            name: 'Actual',
+                            data: company_earnings_data.actual
+                        }, 
+                        {
+                            name: 'Estimate',
+                            data: company_earnings_data.estimate
+                        }]
+
+                    });
+                }
+            }
+
+    </script>
+</body>
+</html>

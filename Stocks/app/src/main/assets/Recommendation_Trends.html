@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Highcharts -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+    <div id="recommendation_trends" class="company_reco"></div>
+
+    <script>
+            function get_recommendation_trends(ticker)
+            {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open('GET','https://assignment-8-346123.wl.r.appspot.com/recommendation/' + ticker, true);
+                xhttp.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText)
+                        display_reco_data(JSON.parse(this.responseText));
+                    }
+                };
+                xhttp.send();
+                
+                function display_reco_data(company_recom_data)
+                {
+                    console.log(company_recom_data.buy)
+		            let bar_chart_colors = ["#2d473a", "#1d8c54", "#bc8c1d", "#f4585a", "#803131"]
+		            
+                    
+                    Highcharts.chart('recommendation_trends',{
+                        chart: {
+                            type: 'column',
+                            events: {
+                                redraw: function () {
+                                    this.Highcharts.reflow();
+                                },
+                            },
+                            
+                        },
+                        colors: bar_chart_colors,
+                        title: {
+                            text: `Recommendation Trends`,
+                            style: {
+                                    fontSize: '22px'
+                                    }
+                        },
+
+                        tooltip: {
+                            headerFormat: '<b>{point.x}</b><br/>',
+                            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                        },
+
+                        xAxis: {
+                            categories: company_recom_data.period
+                        },
+
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: '#Analysis'
+
+                            },
+                            stackLabels: {
+                                enabled: false,
+                            }
+                        },
+
+                        legend: {
+                            align: 'right',
+                            verticalAlign: 'bottom',
+                            borderWidth: 1,
+                            backgroundColor:
+                                Highcharts.defaultOptions.legend.backgroundColor || 'white', shadow: false
+
+                        },
+                        
+                        plotOptions: {
+                            column: {
+                                stacking: 'normal',
+                                dataLabels: {
+                                    enabled: true
+                                }
+                            }
+                        },
+
+                        series: [{
+                            name: 'Strong Buy',
+                            data: company_recom_data.strongBuy
+                        }, {
+                            name: 'Buy',
+                            data: company_recom_data.buy
+                        }, {
+                            name: 'Hold',
+                            data: company_recom_data.hold
+                        }, {
+                            name: 'Sell',
+                            data: company_recom_data.sell
+                        }, {
+                            name: 'Strong Sell',
+                            data: company_recom_data.strongSell
+                        }]
+
+		            });
+                }
+            }
+
+    </script>
+</body>
+</html>

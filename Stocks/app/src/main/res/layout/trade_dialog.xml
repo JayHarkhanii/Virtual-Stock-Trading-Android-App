@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="370dp"
+    android:layout_height="320dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="40dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/card_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="Trade Tesla Inc shares"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/shares_input"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_header"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="#67e0dc"
+                android:hint="0"
+                android:inputType="number|text"
+                android:textColor="@color/black"
+                android:textColorLink="#67e0dc" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_header"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@+id/shares_input"
+                android:text="shares"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/number_of_shares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shares_input"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                android:text="0*"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/curr_comp_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shares_input"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/number_of_shares"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shares_input"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/curr_comp_price"
+                android:text="0.0"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/money_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/number_of_shares"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textColor="#808080"
+                android:layout_centerHorizontal="true"/>
+
+            <Button
+                android:id="@+id/buy_btn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/money_left"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="#009933"
+                android:text="BUY"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/sell_btn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/money_left"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/buy_btn"
+                android:backgroundTint="#009933"
+                android:text="SELL"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

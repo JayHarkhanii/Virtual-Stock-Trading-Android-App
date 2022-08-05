@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:elevation="30dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:id="@+id/news_data_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/comp_news_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="-10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_facebook" />
+
+            <TextView
+                android:id="@+id/news_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/comp_news_image"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/comp_news_source"
+                android:text="6 hours ago"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/comp_news_headline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/comp_news_source"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="5dp"
+                android:maxLines="2"
+                android:text="Greenpeace, Crypto Billionaire Lobby to Change Bitcoin's Code"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/comp_news_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/comp_news_image"
+                android:layout_marginLeft="20dp"
+                android:text="Yahoo"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

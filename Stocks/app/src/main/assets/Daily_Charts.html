@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <!-- Highcharts-->
+	 <script src="https://code.highcharts.com/stock/highstock.js"></script>
+<!--	 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>-->
+	 <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+	 <script src="https://code.highcharts.com/modules/annotations.js"></script>
+	 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+
+    <div id="company_daily_chart" class="daily_charts"></div>
+
+    <script>
+
+		function get_company_daily_charts(ticker, price_difference, timestamp)
+		{
+			var xhttp = new XMLHttpRequest();
+			xhttp.open('GET','https://assignment-8-346123.wl.r.appspot.com/company_daily_data/'+ ticker +'/' + timestamp, true);
+			xhttp.onreadystatechange = function(){
+				if (this.readyState == 4 && this.status == 200){
+					console.log(this.responseText)
+					display_charts(JSON.parse(this.responseText), price_difference);
+				}
+			};
+			xhttp.send();
+			
+
+			function display_charts(stock_daily_chart, price_difference)
+			{
+
+				document.getElementById('company_daily_chart').style.display = "block";
+
+				last_date = []; 
+				var i = 0;
+				var color_price_chart = 'black';
+			
+				// console.log(this.stock_price_change)
+				var len = stock_daily_chart.c.length;
+
+				if(price_difference < 0){
+					color_price_chart = 'red';
+				}
+
+				else if(price_difference > 0){
+					color_price_chart = 'green';
+				}
+
+				if (len != 0) {
+				// if there is chart data in current search
+				while (i < len) {
+					const date_utc = stock_daily_chart.t[i] * 1000;
+					var temp_close = parseFloat(stock_daily_chart.c[i].toFixed(3));
+					last_date[i] = [date_utc, temp_close];
+					i++;
+				}
+
+				Highcharts.stockChart('company_daily_chart',{
+					rangeSelector: {
+						selected: 2,
+					},
+					tooltip: {
+						split: true,
+					},
+					title: {
+						text: ticker + ' Hourly Price Variation',
+						style: {
+							color: 'grey',
+						},
+					},
+					time: {
+						useUTC: false,
+					},
+
+					responsive: {
+						rules: [
+							{ condition: {
+									maxWidth: 500,
+								},
+							},
+						],
+					},
+
+					scrollbar: {
+						enabled: true
+					},
+					
+					rangeSelector: {
+						enabled: false,
+					},
+
+					series: [
+						{
+							name: ticker,
+							data: last_date,
+							type: 'line',
+							color: color_price_chart,
+						},
+					],
+					xAxis: {
+						type: 'datetime',
+						zoomEnabled: true,
+						units: [
+							['minute', [30]],
+							['hour', [1]],
+						],
+					},
+					yAxis: [
+						{	opposite: true,
+							height: '100%',
+							offset: 0,
+						},
+					],
+					plotOptions: {
+						series: {
+							pointPlacement: 'on',
+						},
+					},
+					navigator: {
+						enabled: false,
+						series: {
+							type: 'area',
+							fillColor: color_price_chart,
+						},
+					}
+					
+				});
+			}
+		}
+	}
+
+    </script>
+</body>
+
+</html>
